@@ -1,4 +1,4 @@
-package com.revature.babank;
+package babank;
 
 import java.time.LocalDateTime;
 import java.util.Date;

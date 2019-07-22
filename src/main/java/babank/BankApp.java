@@ -1,4 +1,4 @@
-package com.revature.babank;
+package babank;
 
 import java.util.Scanner;
 
