@@ -87,7 +87,7 @@ public class Account implements Serializable{
 	}
 	
 	public String toString() {
-		return "Account #: " + id + "Balance: $" + balance + "\nOwners: " + owners.toString();
+		return "Account #: " + id + " Balance: $" + balance + "\nOwners: " + owners.toString();
 	}
 	
 	

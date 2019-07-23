@@ -76,11 +76,33 @@ public class Login{
 		//HASH MAP LOADING COMPLETE
 
 
-//################################################################################################################################
-//################################################################################################################################
+//		int newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 10.0, LocalDateTime.now(), AccountType.CHECKING, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 80.0, LocalDateTime.now(), AccountType.CHECKING, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 500.0, LocalDateTime.now(), AccountType.CHECKING, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 901.45, LocalDateTime.now(), AccountType.SAVINGS, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 300.0, LocalDateTime.now(), AccountType.CHECKING, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 560.32, LocalDateTime.now(), AccountType.CHECKING, false, true, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey,new Account(newKey, 5000.0, LocalDateTime.now(), AccountType.SAVINGS, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 380.0, LocalDateTime.now(), AccountType.CHECKING, false, false, LocalDateTime.now()));
+//		newKey = UserActions.generateAccountKey(accounts);
+//		accounts.put(newKey, new Account(newKey, 100.0, LocalDateTime.now(), AccountType.SAVINGS, true, false, LocalDateTime.of(2000, 1, 1, 0, 1)));
+//
+
 		
 		
-//--------------------------------------------Registration & Login Selection--------------------------------------------------------------------
+		//################################################################################################################################
+		//################################################################################################################################
+
+
+		//--------------------------------------------Registration & Login Selection--------------------------------------------------------------------
 		//Prints welcome screen
 		System.out.println("************************************");
 		System.out.println("** Welcome to Community Bank B.A. **");
@@ -99,10 +121,10 @@ public class Login{
 			login = UserInput.isInt();
 		}
 
-		
-//--------------------------------------------Registration--------------------------------------------------------------------------------
+
+		//--------------------------------------------Registration--------------------------------------------------------------------------------
 		if(login == 1) {
-			
+
 			//Username
 			System.out.println("\n**************************");
 			System.out.println("Please create a Username: ");  //<--Prompts user to create a username
@@ -115,18 +137,18 @@ public class Login{
 				username = UserInput.isString();
 			}
 
-			
+
 			//Password
 			System.out.println("Please create a Password: ");
 			String password = UserInput.isString();  //<--Stores password into String
 
-			
+
 			//Account Type
 			//Asks what type of user they are
 			System.out.println("Please enter 1, 2, or 3 for your profile type: ");
 			System.out.println("(1)Customer  (2)Employee  (3)Admin");  //<--Employee & Admin will need approval
 			int userType = UserInput.isInt();  //<--Store type into int
-			
+
 			//Checks if they entered a number outside the suggested range 
 			while(userType != 1 & userType != 2 & userType != 3) {
 				System.out.println("\n**************************");
@@ -134,26 +156,26 @@ public class Login{
 				System.out.println("Please enter: (1)Customer  (2)Employee  (3)Admin" );
 				userType = UserInput.isInt();
 			}
-			
-			
+
+
 			//Name
 			//Asks the user for their full name
 			System.out.println("Please enter your full name: ");
 			String name = UserInput.isString();  //<--Stores name into String
-			
-			
-//--------------------------------------------Registration CUSTOMER--------------------------------------------------------------------------------
-			
+
+
+			//--------------------------------------------Registration CUSTOMER--------------------------------------------------------------------------------
+
 			UserType type; //<--Create type variable that will be instantiated in user type
-			
+
 			//Creates customer account
 			if(userType == 1) {
-				
+
 				//Asks for customer's phone #
 				System.out.println("Please input your phone number (without space or special characters.");
 				System.out.println("Example: 5554738291");
 				long phone = UserInput.isLong();  //<--Stores number into long
-				
+
 				//Checks if they entered a full phone number
 				while(String.valueOf(phone).length() != 10) {
 					System.out.println("\n**************************");
@@ -162,53 +184,53 @@ public class Login{
 					System.out.println("Example: 5554738291");
 					phone = UserInput.isLong();
 				}
-				
+
 				//Stores CUSTOMER type into variable
 				type = UserType.CUSTOMER;
-				
+
 				//Makes a new instance of Customer with all parameters filled out previously
 				users.put(username, new Customer(username, password, name, type, phone));
-				
+
 				//Loads in a method to display the customer menu options
 				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);  //<--Loads in a method to display the customer menu options
 			}
 
-			
-//--------------------------------------------Registration EMPLOYEE--------------------------------------------------------------------------------
+
+			//--------------------------------------------Registration EMPLOYEE--------------------------------------------------------------------------------
 			//Employee account
 			else if(userType == 2) {
-				
+
 				//Stores EMPLOYEE type into variable
 				type = UserType.EMPLOYEE;
-				
+
 				//Makes a new instance of Customer with all parameters filled out previously
 				users.put(username, new Employee(username, password, name, type));
-				
+
 				//Loads in a method to display the customer menu options
 				EmployeeScreen.employeeMenu((Employee)users.get(username), accounts, users);  //<--Loads in a method to display the employee menu options
 			}
-		
-			
-//--------------------------------------------Registration ADMIN--------------------------------------------------------------------------------
+
+
+			//--------------------------------------------Registration ADMIN--------------------------------------------------------------------------------
 			else if(userType == 3) {
-				
+
 				//Stores ADMIN type into variable
 				type = UserType.ADMIN;
-				
+
 				//Makes a new instance of Customer with all parameters filled out previously
 				users.put(username, new Admin(username, password, name, type));
-				
+
 				//Loads in a method to display the customer menu options
 				AdminScreen.adminMenu((Admin)users.get(username), accounts, users);  //<--Loads in a method to display the admin menu options
 			}
-			
+
 		}//end Registration
 
-		
-//--------------------------------------------Login Username & Password--------------------------------------------------------------------------------
+
+		//--------------------------------------------Login Username & Password--------------------------------------------------------------------------------
 		//Login prexisting users
 		else if(login == 2) {
-			
+
 			//Username
 			System.out.println("\n**************************");
 			System.out.println("Please enter your Username: ");  //<--Prompts user to enter their username
@@ -220,36 +242,36 @@ public class Login{
 				System.out.println("The Username given was not found. Please reenter your Username: ");
 				username = UserInput.isString();
 			}
-			
-			
+
+
 			//Password
 			System.out.println("Please enter your Password: ");
 			String password = UserInput.isString();  //<--Stores password into String
-			
+
 			//Checks if user's password matches the one tied to their username/account
 			while(!users.get(username).password.equals(password)) {
 				System.out.println("\n**************************");
 				System.out.println("Password did not match the Username. Please reenter your Password: ");
 			}
-			
-			
-//--------------------------------------------Login CUSTOMER, EMPLOYEE, & ADMIN--------------------------------------------------------------------------------
+
+
+			//--------------------------------------------Login CUSTOMER, EMPLOYEE, & ADMIN--------------------------------------------------------------------------------
 
 			//CUSTOMER
 			if(users.get(username).type == UserType.CUSTOMER) {
 				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);  //<--Loads in a method to display the customer menu options
 			}
-			
+
 			//EMPLOYEE
 			else if(users.get(username).type == UserType.EMPLOYEE) {
 				EmployeeScreen.employeeMenu((Employee)users.get(username), accounts, users);  //<--Loads in a method to display the employee menu options
 			}
-			
+
 			//ADMIN
 			else {
 				AdminScreen.adminMenu((Admin)users.get(username), accounts, users);  //<--Loads in a method to display the admin menu options
 			}
-			
+
 		}//end Login
 
 	}//end main
