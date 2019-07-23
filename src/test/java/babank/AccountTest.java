@@ -59,6 +59,12 @@ class AccountTest {
 	}
 	
 	@Test
+	void testAddOwner() {
+		acc1.addOwner("kevin");
+		assertTrue(acc1.getOwners().contains("kevin"));
+	}
+	
+	@Test
 	void testClose() {
 		acc2.close();
 		assertFalse(acc2.isOpen);

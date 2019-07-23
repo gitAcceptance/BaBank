@@ -2,14 +2,14 @@ package babank;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.HashSet;
 
 public class Account implements Serializable{
 	int id;
 	double balance;
 	LocalDateTime dateCreated;
 	AccountType type;
-	
+	HashSet<String> owners;
 	
 	// TODO transaction history
 	
@@ -40,6 +40,15 @@ public class Account implements Serializable{
 		this.isOpen = isOpen;
 		this.isPendingApproval = isPendingApproval;
 		this.dateClosed = dateClosed;
+		this.owners = new HashSet<String>();
+	}
+	
+	public void addOwner(String userName) {
+		owners.add(userName);
+	}
+	
+	public HashSet<String> getOwners() {
+		return owners;
 	}
 
 	/**
@@ -76,4 +85,12 @@ public class Account implements Serializable{
 		isOpen = false;
 		dateClosed = LocalDateTime.now();
 	}
+	
+	public String toString() {
+		return "Account #: " + id + "Balance: $" + balance + "\nOwners: " + owners.toString();
+	}
+	
+	
+	
+	
 }

@@ -17,5 +17,9 @@ public class Admin extends User implements Serializable {
 		super(userName, password, fullName, type);
 		this.isPendingApproval = true;
 	}
+	
+	public void approveAccount() {
+		isPendingApproval = false;
+	}
 
 }

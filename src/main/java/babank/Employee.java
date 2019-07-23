@@ -13,5 +13,9 @@ public class Employee extends User implements Serializable {
 		super(userName, password, name, type);
 		this.isPendingApproval = true;
 	}
+	
+	public void approveAccount() {
+		isPendingApproval = false;
+	}
 
 }
