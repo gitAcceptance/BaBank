@@ -2,8 +2,10 @@ package babank;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Random;
@@ -46,7 +48,7 @@ public class BankApp {
 		FileInputStream userFile = null;
 		
 		try {
-			accountFile = new FileInputStream("AccountInfo.ser");
+			accountFile = new FileInputStream("Accounts.ser");
 		} catch (FileNotFoundException e) {
 			System.out.println("Account info file not found, initializing blank account list.");
 			accounts = new HashMap<Integer, Account>();
@@ -54,7 +56,7 @@ public class BankApp {
 		}
 		
 		try {
-			userFile = new FileInputStream("UserInfo.ser");
+			userFile = new FileInputStream("Users.ser");
 		} catch (FileNotFoundException e) {
 			System.out.println("User info file not found, initializing default user list.");
 			users = new HashMap<String, User>();
@@ -98,20 +100,102 @@ public class BankApp {
 		if(!accounts.containsKey(key) && accountsFileFound) {
 			accounts.put(Integer.valueOf(key), new Account(key, LocalDateTime.now(), AccountType.CHECKING));
 		}
+		// HASH MAP LOADING COMPLETE
+        
+        
+        
+		
+		
+		
+		
+		
+		// SAVING OUR ACCOUNTS
+		FileOutputStream accountFileOutStream = null;
+		ObjectOutputStream accountObjectOut = null;
+		try {
+			accountFileOutStream = new FileOutputStream("Accounts.ser");
+			accountObjectOut = new ObjectOutputStream(accountFileOutStream);
+			accountObjectOut.writeObject(accounts);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		
         
-        
-        
-          
-        // Method for deserialization of object 
-        //HashMap<String, User> object1 = (HashMap<String, User>) userInStream.readObject();
+		// SAVING OUR USERS
+		FileOutputStream userFileOutStream = null;
+		ObjectOutputStream userObjectOut = null;
+		try {
+			userFileOutStream = new FileOutputStream("Users.ser");
+			userObjectOut = new ObjectOutputStream(userFileOutStream);
+			userObjectOut.writeObject(users);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		// CLOSING STREAMS
+		if (accountObjectOut !=  null) {
+			try {
+				accountObjectOut.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (userObjectOut != null) {
+			try {
+				userObjectOut.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		// CLOSING FILES
+		if (accountFileOutStream != null) {
+			try {
+				accountFileOutStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (userFileOutStream != null ) {
+			try {
+				userFileOutStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 		
 		 
 		
 		
-		
-		HashMap<String, User> allUsers =       new HashMap<String, User>();
-		HashMap<String, Account> allAccounts = new HashMap<String, Account>();
 		
 		
 		
