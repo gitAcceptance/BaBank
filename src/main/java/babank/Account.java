@@ -7,7 +7,7 @@ public class Account {
 	int id;
 	double balance;
 	LocalDateTime dateCreated;
-	String accountType;
+	AccountType type;
 	
 	// TODO transaction history
 	
@@ -20,22 +20,17 @@ public class Account {
 //	LocalDateTime now = LocalDateTime.now();  
 //	System.out.println(dtf.format(now));  
 	
-	public Account(int id, String accountType) {
-		this(id, 0, LocalDateTime.now(), accountType, true, null);
+	public Account(int id, LocalDateTime dateCreated , AccountType type) {
+		this(id, 0, dateCreated, type, true, null);
 	}
 	
 	
-	
-	
-	public Account(int id, double balance, LocalDateTime dateCreated, String accountType, boolean isOpen, Date dateClosed) {
+	public Account(int id, double balance, LocalDateTime dateCreated, AccountType type, boolean isOpen, Date dateClosed) {
 		super();
 		this.id = id;
 		this.balance = balance;
-		
-		
-		
 		this.dateCreated = dateCreated;
-		this.accountType = accountType;
+		this.type = type;
 		this.isOpen = isOpen;
 		this.dateClosed = dateClosed;
 	}

@@ -1,24 +1,31 @@
 package babank;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.HashSet;
 
-public class Customer {
+public class Customer extends User implements Serializable {
 	
-	String userName;
-	String password;
-	String name;
-	String address;
-	Date dateOfBirth;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3980819666127803352L;
 	int ssn;
+	HashSet<Integer> accounts; // This will contain a list of all the account IDs that the user owns
 	
-	// then we also need a collection with all the account the customer owns
 	
 	
+	public Customer(String userName, String password, String name, UserType type, int ssn) {
+		super(userName, password, name, type);
+		this.ssn = ssn;
+	}
 	
 	public static void addAccount() {
 		
 	}
 	
+	
+
 	public void removeAccount() {
 		
 	}
