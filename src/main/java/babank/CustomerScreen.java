@@ -1,26 +1,28 @@
 package babank;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
 public class CustomerScreen {
 
-	//Need to take in username to get info
-
-		static void customerMenu(Customer user) {
-		
-		
-			
+		static void customerMenu(Customer user, HashMap<Integer, Account> accounts, HashMap<String, User> users) {
 			
 		int customerOption;
 		do {	
 		System.out.println("************************************");
-		System.out.println("** Welcome to Community Bank B.A. **");
+		System.out.println("** Welcome to Community Bank B.A. **");  //<--Prints welcome message
 		System.out.println("************************************");
 
-		System.out.println("\nHello " + user.name);
-		System.out.println("Please type either 1, 2, 3, 4, 5 to active the following: ");
+		System.out.println("\nHello " + user.name + "!");
+		System.out.println("Please type either 1, 2, 3, 4, 5 to active the following: ");  //<--Asks Customer what they'd like to do
 		System.out.println("(1)Make new Account  (2)Withdraw  (3)Deposit  (4)Transfer   (5)Logout");
 
-		customerOption = UserInput.isInt();
+		customerOption = UserInput.isInt();  //<--Stores input into int
 
+		//Checks that input was one of the listed options
 		while(customerOption != 1 & customerOption != 2 & customerOption != 3 & customerOption != 4 & customerOption != 5) {
 			System.out.println("\n**************************");
 			System.out.println("Invalid menu option." );
@@ -28,23 +30,26 @@ public class CustomerScreen {
 			customerOption = UserInput.isInt();
 		}
 
+		//Executed the method chosen by the user
 		switch(customerOption) {
 		case 1:
 			//Redirect to new Account screen
 			break;
 		case 2:
-			withdraw();
+			UserActions.withdraw();
 			break;
 		case 3:
-			deposit();
+			UserActions.deposit();
 			break;
 		case 4:
-			transfer();
+			UserActions.transfer();
 			break;
 		case 5:
-			System.out.println("\n\n**********************************");
-			System.out.println("** Logout Successful, Thank You **");
-			System.out.println("**********************************");
+			Logout.save(accounts, users);  //<--Saves all user's data into a file
+			System.out.println("\n\nThanks for visiting " + user.name + "!");
+			System.out.println("\n***********************");
+			System.out.println("** Logout Successful **");  //<--Prints goodbye screen
+			System.out.println("***********************");
 			break;
 		}
 
@@ -52,108 +57,15 @@ public class CustomerScreen {
 		
 	}//end customerMenu
 
-	
-//------------------------------------Withdraw-------------------------------------------
-	static void withdraw() {
-
-		System.out.println("\n** Withdraw **");
-		System.out.println("Here are your accounts: " );//<--Load in all accounts   ID + Type + Balance
-		//For loop to display all accounts they have
-
-		System.out.println("\nPlease specify which account you'd like to withdraw from.");
-		System.out.println("Enter a number " + "(numbers of accounts)"); //<--Need list size
-
-		//Need while loop to keep in scope
-		int accountSelect = UserInput.isInt();
-		//Get account at [accountSelection]
-		//Save into variable
-
-		System.out.println("\nThis account currently has " + "(balance)"); //<--Get balance of account
-		System.out.println("Please specify the amount you'd like to withdraw:");
-
-		//Need while loop so not greater than balance
-		double amount = Math.round(UserInput.isDouble() * 100) / 100d;
 		
-		//Balance -= amount;
-		//Update balance
-
-		System.out.println("\nYour withdrawl of " + amount + " was successful."); 
-		System.out.println("Your new balance is: " + "(balance)"); //<--Print updated balance
-
-		//call customerMenu
-
-	}//end withdraw()
-
-
-//------------------------------------Deposit------------------------------------------
-	static void deposit() {
-
-		System.out.println("\n** Deposit **");
-		System.out.println("Here are your accounts: " );//<--Load in all accounts   ID + Type + Balance
-		//For loop to display all accounts they have
-
-		System.out.println("\nPlease specify which account you'd like to deposit into.");
-		System.out.println("Enter a number " + "(numbers of accounts)"); //<--Need list size
-
-		//Need while loop to keep in scope
-		int accountSelect = UserInput.isInt();
-		//Get account at [accountSelection]
-		//Save into variable
-
-		System.out.println("\nThis account currently has " + "(balance)"); //<--Get balance of account
-		System.out.println("Please specify the amount you'd like to deposit:");
-
-		double amount = Math.round(UserInput.isDouble() * 100) / 100d;
-
-		//Balance += amount;
-		//Update balance
-
-		System.out.println("\nYour deposit of " + amount + " was successful."); 
-		System.out.println("Your new balance is: " + "(balance)"); //<--Print updated balance
-
-		//call customerMenu
-
-	}//end deposit()
-	
-	
-//------------------------------------Transfer------------------------------------------
-		static void transfer() {
-
-			System.out.println("\n** Transfer **");
-			System.out.println("Here are your accounts: " );//<--Load in all accounts   ID + Type + Balance
-			//For loop to display all accounts they have
-
-			System.out.println("\nPlease specify which account you'd like to transfer from.");
-			System.out.println("Enter a number " + "(numbers of accounts)"); //<--Need list size
-
-			//Need while loop to keep in scope
-			int accountSelect = UserInput.isInt();
-			//Get account at [accountSelection]
-			//Save into variable
+//------------------------------------Account-------------------------------------------
+	static void addAccount() {
 			
-			System.out.println("\nPlease specify which account you'd like to transfer to.");
-			System.out.println("Enter a number " + "(numbers of accounts)"); //<--Need list size
+	}
+		
+		
+		
+	
 
-			//Need while loop to keep in scope
-			int accountSelect2 = UserInput.isInt();
-			//Get account at [accountSelection]
-			//Save into variable
-
-			System.out.println("\nYour account currently has " + "(balance)"); //<--Get balance of account
-			System.out.println("Please specify the amount you'd like to transfer:");
-
-			//Need while loop so not greater than balance
-			double amount = Math.round(UserInput.isDouble() * 100) / 100d;
-
-			//Balance -= amount;  <--accountSelect
-			//Balance += amount;  <--accountSelect2
-			//Update balances
-
-			System.out.println("\nYour transfer of " + amount + " was successful."); 
-			System.out.println("Your new balance is: " + "(balance)"); //<--Print updated balance of accountSelect
-
-			//call customerMenu
-
-		}//end transfer()
 		
 }//end CustomerScreen
