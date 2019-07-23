@@ -18,8 +18,8 @@ class AccountTest {
 
 	@BeforeAll
 	static void setUp() throws Exception {
-		acc1 = new Account(1001, 7.00, LocalDateTime.now(), AccountType.CHECKING, null, null);
-		acc2 = new Account(1002, 700.00, LocalDateTime.now(), AccountType.CHECKING, true, null);
+		acc1 = new Account(1001, 7.00, LocalDateTime.now(), AccountType.CHECKING, false, true, null);
+		acc2 = new Account(1002, 700.00, LocalDateTime.now(), AccountType.CHECKING, true, false, null);
 	}
 	
 	@Test
