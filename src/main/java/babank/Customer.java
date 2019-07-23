@@ -18,17 +18,30 @@ public class Customer extends User implements Serializable {
 	public Customer(String userName, String password, String name, UserType type, int phone) {
 		super(userName, password, name, type);
 		this.phone = phone;
+		accounts = new HashSet<Integer>(); 
 	}
 	
-	public static void addAccount() {
-		
+	public void addAccount(int accountNumber) {
+		accounts.add(Integer.valueOf(accountNumber));
 	}
 	
 	
-
-	public void removeAccount() {
-		
+	/**
+	 * Removes the account from the customer's list of accounts.
+	 * 
+	 * @param accountNumber
+	 * @return Returns true if the account exists, and false otherwise.
+	 */
+	public boolean removeAccount(int accountNumber) {
+		if (accounts.contains(Integer.valueOf(accountNumber))) {
+			accounts.remove(Integer.valueOf(accountNumber));
+			return true;
+		} else {
+			return false;
+		}
 	}
+	
+	
 	
 	public static void applyForNewAccount() {
 		

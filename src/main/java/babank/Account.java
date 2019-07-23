@@ -9,11 +9,13 @@ public class Account {
 	LocalDateTime dateCreated;
 	AccountType type;
 	
+	
 	// TODO transaction history
 	
-	boolean isOpen;
+	Boolean isOpen;
+	// isOpen is set to null by default to indicate that the account has not yet been approved
 	
-	Date dateClosed;
+	LocalDateTime dateClosed;
 	// lets store who closed the account
 	
 //	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
@@ -21,11 +23,11 @@ public class Account {
 //	System.out.println(dtf.format(now));  
 	
 	public Account(int id, LocalDateTime dateCreated , AccountType type) {
-		this(id, 0, dateCreated, type, true, null);
+		this(id, 0, dateCreated, type, null, null);
 	}
 	
 	
-	public Account(int id, double balance, LocalDateTime dateCreated, AccountType type, boolean isOpen, Date dateClosed) {
+	public Account(int id, double balance, LocalDateTime dateCreated, AccountType type, Boolean isOpen, LocalDateTime dateClosed) {
 		super();
 		this.id = id;
 		this.balance = balance;
@@ -49,4 +51,20 @@ public class Account {
 		acc.balance = acc.balance + dollars;
 	}
 	
+	public boolean isPendingApproval() {
+		if (isOpen == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void approve() {
+		isOpen = true;
+	}
+	
+	public void close() {
+		isOpen = false;
+		dateClosed = LocalDateTime.now();
+	}
 }
