@@ -9,7 +9,8 @@ import java.util.HashMap;
 public class Logout {
 
 	public static void save(HashMap<Integer, Account> accounts, HashMap<String, User> users) {
-		// SAVING OUR ACCOUNTS
+
+		//------------------------------------Saving the Accounts-------------------------------------------
 		FileOutputStream accountFileOutStream = null;
 		ObjectOutputStream accountObjectOut = null;
 		try {
@@ -17,15 +18,13 @@ public class Logout {
 			accountObjectOut = new ObjectOutputStream(accountFileOutStream);
 			accountObjectOut.writeObject(accounts);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 
-
-		// SAVING OUR USERS
+		//------------------------------------Saving the Users-------------------------------------------
 		FileOutputStream userFileOutStream = null;
 		ObjectOutputStream userObjectOut = null;
 		try {
@@ -33,21 +32,17 @@ public class Logout {
 			userObjectOut = new ObjectOutputStream(userFileOutStream);
 			userObjectOut.writeObject(users);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 
-
-		// CLOSING STREAMS
+		//------------------------------------Closing Stream-------------------------------------------
 		if (accountObjectOut !=  null) {
 			try {
 				accountObjectOut.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -56,19 +51,16 @@ public class Logout {
 			try {
 				userObjectOut.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 
-
-		// CLOSING FILES
+		//------------------------------------Closing Files-------------------------------------------
 		if (accountFileOutStream != null) {
 			try {
 				accountFileOutStream.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -76,10 +68,10 @@ public class Logout {
 			try {
 				userFileOutStream.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-	}
-	
+		
+	}//end save()
+
 }//end Logout class

@@ -2,6 +2,49 @@ package babank;
 
 public class UserActions {
 
+
+	//------------------------------------Add Account-------------------------------------------
+	static void addAccount() {
+
+	}//end addAccount()
+	
+	
+	//------------------------------------View Account Info-------------------------------------------
+	static void accountInfo() {
+
+	}//end accountInfo()
+
+	
+	//------------------------------------View Account Balance-------------------------------------------
+	static void accountBalance() {
+
+	}//end accountBalance()
+
+
+	//------------------------------------View Customer Info-------------------------------------------
+	static void customerInfo() {
+
+	}//end customerInfo()
+
+	
+	//------------------------------------Account Approval-------------------------------------------
+	static void accountApproval() {
+
+	}//end accountApproval()
+
+	
+	//------------------------------------Admin Approval-------------------------------------------
+	static void adminApproval() {
+
+	}//end adminApproval()
+
+	
+	//------------------------------------Close Account-------------------------------------------
+	static void accountClose() {
+
+	}//end addAccount()
+
+
 	//------------------------------------Withdraw-------------------------------------------
 	static void withdraw() {
 
@@ -10,7 +53,7 @@ public class UserActions {
 		//For loop to display all accounts they have
 
 		System.out.println("\nPlease specify which account you'd like to withdraw from.");  //<--Asks user to specify account
-		System.out.println("Enter a number " + "(numbers of accounts)"); //<--TODONeed list size
+		System.out.println("Enter a number " + "(numbers of accounts)"); //<--TODO Need list size
 
 		//Need while loop to keep in scope
 		int accountSelect = UserInput.isInt();

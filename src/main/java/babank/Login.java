@@ -44,13 +44,10 @@ public class Login{
 			try {
 				accountInStream = new ObjectInputStream(accountFile);
 				accounts = (HashMap<Integer, Account>) accountInStream.readObject();
-			} catch (EOFException e) {
-				// TODO Auto-generated catch block
+			}catch (EOFException e) {
 			}catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -62,12 +59,9 @@ public class Login{
 				usersInStream = new ObjectInputStream(userFile);
 				users = (HashMap<String, User>) usersInStream.readObject();
 			}catch (EOFException e) {
-				// TODO Auto-generated catch block
 			}catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -176,7 +170,7 @@ public class Login{
 				users.put(username, new Customer(username, password, name, type, phone));
 				
 				//Loads in a method to display the customer menu options
-				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);
+				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);  //<--Loads in a method to display the customer menu options
 			}
 
 			
@@ -191,7 +185,7 @@ public class Login{
 				users.put(username, new Employee(username, password, name, type));
 				
 				//Loads in a method to display the customer menu options
-				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users); //TODO Make EMPLOYEE screen
+				EmployeeScreen.employeeMenu((Employee)users.get(username), accounts, users);  //<--Loads in a method to display the employee menu options
 			}
 		
 			
@@ -205,7 +199,7 @@ public class Login{
 				users.put(username, new Admin(username, password, name, type));
 				
 				//Loads in a method to display the customer menu options
-				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users); //TODO Make EMPLOYEE screen
+				AdminScreen.adminMenu((Admin)users.get(username), accounts, users);  //<--Loads in a method to display the admin menu options
 			}
 			
 		}//end Registration
@@ -248,12 +242,12 @@ public class Login{
 			
 			//EMPLOYEE
 			else if(users.get(username).type == UserType.EMPLOYEE) {
-				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);  //TODO<--Loads in a method to display the employee menu options
+				EmployeeScreen.employeeMenu((Employee)users.get(username), accounts, users);  //<--Loads in a method to display the employee menu options
 			}
 			
 			//ADMIN
 			else {
-				CustomerScreen.customerMenu((Customer)users.get(username), accounts, users);  //TODO<--Loads in a method to display the customer menu options
+				AdminScreen.adminMenu((Admin)users.get(username), accounts, users);  //<--Loads in a method to display the admin menu options
 			}
 			
 		}//end Login

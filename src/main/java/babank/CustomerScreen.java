@@ -1,9 +1,5 @@
 package babank;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public class CustomerScreen {
@@ -30,8 +26,7 @@ public class CustomerScreen {
 			customerOption = UserInput.isInt();
 		}
 
-		//Executed the method chosen by the user
-		switch(customerOption) {
+		switch(customerOption) {  //<--Executes the method chosen by the user
 		case 1:
 			//Redirect to new Account screen
 			break;
@@ -55,17 +50,6 @@ public class CustomerScreen {
 
 		}while(customerOption != 5);
 		
-	}//end customerMenu
+	}//end customerMenu()
 
-		
-//------------------------------------Account-------------------------------------------
-	static void addAccount() {
-			
-	}
-		
-		
-		
-	
-
-		
 }//end CustomerScreen
