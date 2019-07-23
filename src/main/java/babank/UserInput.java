@@ -2,7 +2,7 @@ package babank;
 
 import java.util.Scanner;
 
-public class TestInput {
+public class UserInput {
 		
 		//Makes a scanner to read user's input (prompt will be in each question)
 		static Scanner keyboard = new Scanner(System.in);
