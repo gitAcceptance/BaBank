@@ -37,6 +37,14 @@ public class Account {
 		this.dateClosed = dateClosed;
 	}
 
+	/**
+	 * @return the balance
+	 */
+	public double getBalance() {
+		return balance;
+	}
+
+
 	public void deposit(double dollars) {
 		balance += dollars;
 	}

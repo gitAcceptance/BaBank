@@ -77,6 +77,11 @@ public class User implements Serializable {
 	public void setType(UserType type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", type=" + type + "]";
+	}
 	
 	
 	
